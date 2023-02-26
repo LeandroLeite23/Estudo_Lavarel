@@ -16,7 +16,7 @@
     <br>
     <div class="informacao-pagina">
         <div style="width:90%; margin-left: auto; margin-right:auto ">
-            <table border="1" width="100%">
+            <table width="100%">
                 <thead>
                     <tr>
                         <th>Nome</th>
@@ -29,7 +29,7 @@
                 </thead>
 
                 <tbody>
-                    @foreach ($lista_fornecedor as $fornecedor )
+                    @foreach ($fornecedores as $fornecedor )
                     <tr>
                         <td>{{ $fornecedor->nome }}</td>
                         <td>{{ $fornecedor->site }}</td>
@@ -41,6 +41,7 @@
                     @endforeach
                 </tbody>
         </table>
+        {{ $fornecedores->links() }}
         </div>
     </div>
 </div>
