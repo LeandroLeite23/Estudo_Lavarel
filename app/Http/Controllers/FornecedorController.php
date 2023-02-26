@@ -17,7 +17,7 @@ class FornecedorController extends Controller
 
     public function adicionar(Request $request){
 
-        //$fornecedor = new Fornecedor();
+        $msg = '';
 
         if(isset($request->_token) && $request->input('_token') != ''){
 
@@ -36,8 +36,13 @@ class FornecedorController extends Controller
             ];
 
             $request->validate($regras, $feedback);
+
+            $fornecedor = new Fornecedor();
+            $fornecedor->create($request->all());
+
+            $msg = 'Cadastro realizado com sucesso!';
         }
 
-        return view('app.fornecedor.adicionar');
+        return view('app.fornecedor.adicionar', ['msg' => $msg]);
     }
 }
