@@ -28,7 +28,7 @@ class FornecedorController extends Controller
 
         $msg = '';
 
-        if(isset($request->_token) && $request->input('_token') != ''){
+        if(isset($request->_token) && $request->input('_token') != '' && $request->input('id') == ''){
 
             $regras = [
                 'nome' => 'required|min:3|max:40',
@@ -52,6 +52,25 @@ class FornecedorController extends Controller
             $msg = 'Cadastro realizado com sucesso!';
         }
 
+        if(isset($request->_token) && $request->input('_token') != '' && $request->input('id') != ''){
+            $fornecedor = Fornecedor::find($request->input('id'));
+            $update = $fornecedor->update($request->all());
+
+            if($update){
+                $msg = 'Update realizado com sucesso.';
+            }
+            else{
+                $msg = 'Update apresentou problemas.';
+            }
+        }
+
         return view('app.fornecedor.adicionar', ['msg' => $msg]);
+    }
+
+    public function editar($id){
+
+        $fornecedor = Fornecedor::find($id);
+
+        return view('app.fornecedor.adicionar', ['fornecedor' => $fornecedor]);
     }
 }
