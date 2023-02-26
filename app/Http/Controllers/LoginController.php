@@ -51,4 +51,8 @@ class LoginController extends Controller
             return redirect()->route('site.login', ['erro' => 1]);
         }
     }
+
+    public function sair(){
+        echo 'Sair';
+    }
 }
