@@ -31,7 +31,7 @@ Route::middleware('autenticacao:Padrao,visitante')->prefix('/app')->group(functi
     Route::get('/produto', [\App\Http\Controllers\ProdutoController::class, 'index'])->name('app.produto');
 });
 
-Route::get('/teste/{p1}/{p2}', [\App\Http\Controllers\TesteController::class,'teste'])->name('teste');
+//Route::get('/teste/{p1}/{p2}', [\App\Http\Controllers\TesteController::class,'teste'])->name('teste');
 
 Route::fallback(function(){
     echo 'Página inexistente. <a href="'.route('site.index').'">Clique aqui</a> para retornar a página inicial';
