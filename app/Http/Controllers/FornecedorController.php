@@ -57,20 +57,22 @@ class FornecedorController extends Controller
             $update = $fornecedor->update($request->all());
 
             if($update){
-                $msg = 'Update realizado com sucesso.';
+                $msg = 'Atualização realizada com sucesso.';
             }
             else{
-                $msg = 'Update apresentou problemas.';
+                $msg = 'Falha durante a atualização do registro.';
             }
+
+            return redirect()->route('app.fornecedor.editar', ['id' => $request->input('id'),'msg' => $msg]);
         }
 
         return view('app.fornecedor.adicionar', ['msg' => $msg]);
     }
 
-    public function editar($id){
+    public function editar($id, $msg = ''){
 
         $fornecedor = Fornecedor::find($id);
 
-        return view('app.fornecedor.adicionar', ['fornecedor' => $fornecedor]);
+        return view('app.fornecedor.adicionar', ['fornecedor' => $fornecedor, 'msg' => $msg]);
     }
 }
