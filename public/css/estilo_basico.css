@@ -195,11 +195,13 @@ button:hover {
     margin: 0px 15px 0px 15px;
 }
 
-li{
+.pagination li{
     display: inline;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
-ul{
+.pagination ul{
     list-style-type: none;
 }
 
